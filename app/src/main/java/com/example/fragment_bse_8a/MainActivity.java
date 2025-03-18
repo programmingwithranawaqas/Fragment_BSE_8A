@@ -73,5 +73,14 @@ public class MainActivity extends AppCompatActivity implements ListFrag.OnContac
     public void onContactItemClicked(int position) {
         tvAddress.setText(contacts.get(position).getAddress());
         tvPhoneNumber.setText(contacts.get(position).getPhone());
+
+        if(portrait!=null)
+        {
+            fragmentManager.beginTransaction()
+                    .hide(fragmentManager.findFragmentById(R.id.listfrag))
+                    .show(fragmentManager.findFragmentById(R.id.detailfrag))
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 }
